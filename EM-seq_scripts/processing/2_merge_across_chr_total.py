@@ -17,7 +17,7 @@ lf = pl.scan_parquet(parquet_dir+"chr*_total_matrix.parquet",   include_file_pat
 
 ## Fix columns & calculate thresholds
 lf = lf.with_columns(
-    pl.col("file").str.extract(r"(chr[^/_]+)").alias("chrom")
+    pl.col("file").str.extract(r"([^/]+)_total_matrix\.parquet$", 1).alias("chrom")
 )
 
 ## Fix columns & calculate thresholds

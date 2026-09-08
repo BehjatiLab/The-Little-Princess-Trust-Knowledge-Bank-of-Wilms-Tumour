@@ -25,7 +25,7 @@ lf = pl.scan_parquet(pattern, include_file_paths="file")
 
 # STEP 1: create 'chrom'
 lf = lf.with_columns(
-    pl.col("file").str.extract(r"(chr[^/_]+)").alias("chrom")
+    pl.col("file").str.extract(r"([^/]+)_meth_count_matrix\.parquet$", 1).alias("chrom")
 )
 
 # STEP 2: now 'chrom' exists; create 'cpg_id'
